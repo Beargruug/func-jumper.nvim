@@ -1,5 +1,6 @@
 -- main module file
 local module = require("func_jumpr.module")
+local telescope = require("telescope").load_extension("func_jumpr")
 
 ---@class Config
 ---@field opt string Your config option
@@ -20,8 +21,9 @@ M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
 end
 
-M.hello = function()
-  return module.my_first_function(M.config.opt)
+M.toggle = function()
+  return telescope.toggle_func_jumpr()
+  -- return module.my_first_function(M.config.opt)
 end
 
 return M
